@@ -1,0 +1,27 @@
+scanner:
+  # Scan Update Frequency (Hz)
+  scan_frequency: 10.0
+
+  # Horizontal Field of View (degrees; -360 to 360)
+  theta_span: 90.0
+
+  # Vertical Field of View (degrees; -180 to 180)
+  phi_span: 90.0
+
+  # Number of Rays in Horizontal Plane
+  theta_points: 50
+
+  # Number of Rays in Vertical Plane
+  phi_points: 50
+
+  # Line of Sight Noise (optional; meters)
+  los_variance: 0.010
+
+  # Orthogonal Noise (optional; meters)
+  orthogonal_variance: 0.010
+
+  # Maximum Angle of Incidence before loss of data (optional; degrees)
+  max_incidence_angle: 60.0
+
+  # Maximum distance before loss of data (optional; meters)
+  max_distance: 10.0

@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<launch>
+  <arg name="params_file" default="$(find simulated_lidar_scanner)/test/test_params.yaml"/>
+  <arg name="fixed_frame" default="world"/>
+  <arg name="scanner_frame" default="scanner"/>
+  <arg name="scanner_name" default="scanner"/>
+  <arg name="tf_filter_distance" default="0.0"/>
+  <arg name="tf_filter_angle" default="0.02"/>
+
+  <node name="$(arg scanner_name)" pkg="simulated_lidar_scanner" type="simulated_lidar_scanner_node" output="screen" clear_params="true">
+    <rosparam command="load" file="$(arg params_file)"/>
+    <param name="fixed_frame" value="$(arg fixed_frame)"/>
+    <param name="scanner_frame" value="$(arg scanner_frame)"/>
+    <param name="tf_filter_angle" value="$(arg tf_filter_angle)"/>
+    <param name="tf_filter_distance" value="$(arg tf_filter_distance)"/>
+  </node>
+
+</launch>

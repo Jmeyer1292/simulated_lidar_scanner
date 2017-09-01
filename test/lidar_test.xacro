@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<robot name="lidar_test" xmlns:xacro="http://ros.org/wiki/xacro">
+  <link name="odom"/>
+  <link name="lidar_parent"/>
+  <link name="view_object">
+    <visual>
+      <geometry>
+        <mesh filename="package://simulated_lidar_scanner/test/view_object.stl"/>
+      </geometry>
+      <material name="view_object_material">
+        <color rbga="1 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="lidar_parent_joint" type="fixed">
+    <origin xyz="1 0 2" rpy="0 -${radians(135)} 0"/>
+    <parent link="odom"/>
+    <child link="lidar_parent"/>
+  </joint>
+
+  <joint name="view_object_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="odom"/>
+    <child link="view_object"/>
+  </joint>
+</robot>

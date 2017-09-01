@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<launch>
+  <arg name="tf_filter_distance" default="0.010"/>
+  <arg name="tf_filter_angle" default="1.0"/>
+
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find simulated_lidar_scanner)/test/lidar_test.xacro'" />
+
+  <include file="$(find simulated_lidar_scanner)/launch/scanner_relocator.launch">
+    <arg name ="fixed_frame" value="odom"/>
+    <arg name ="scanner_parent_frame" value="lidar_parent"/>
+    <arg name ="scanner_params_file" value="$(find simulated_lidar_scanner)/test/test_params.yaml"/>
+    <arg name="tf_filter_angle" value="$(arg tf_filter_angle)"/>
+    <arg name="tf_filter_distance" value="$(arg tf_filter_distance)"/>
+  </include>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find simulated_lidar_scanner)/config/sensor_relocator.rviz"/>
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+
+</launch>
